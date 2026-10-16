@@ -1,22 +1,26 @@
 # LaneFlow Free
 
-Process-level traffic routing for Windows — bind selected applications to a dedicated proxy exit while leaving everything else on its original network path.
+**Route selected Windows applications through a dedicated network exit — while leaving everything else alone.**
 
-LaneFlow Free is a lightweight Windows desktop tool for second-stage traffic splitting.
-It works on top of an existing TUN/VPN or proxy setup:
+Pick an application. Set an exit. Run it.
+Everything else keeps its original route.
 
-- enter a proxy endpoint;
-- select an application;
-- bind that application to the configured exit;
-- keep unbound applications on their original route.
+LaneFlow Free is a lightweight Windows desktop tool for process-level traffic routing. It works on top of an existing TUN/VPN or proxy setup and binds one chosen application to a configured exit endpoint, while every unbound application stays on its original network path.
 
-The goal is simple:
-One machine. Multiple network paths. Application-level control.
+## Quick start
+
+1. Run LaneFlow Free as Administrator.
+2. Enter a proxy endpoint (server address, port, and credentials if required).
+3. Select an application from the running-process list.
+4. Enable interception — the selected application is now routed through the dedicated exit.
+5. Done. Everything else keeps its original route.
+
+Disable interception at any time and the system DNS / routing state is restored automatically.
 
 ## Why LaneFlow?
 
-Traditional proxy configuration often operates at the device, browser, or domain level.
-LaneFlow takes a different approach:
+Traditional proxy configuration operates at the device, browser, or domain level.
+LaneFlow operates at the process level:
 
 ```
 Existing network / VPN setup
@@ -33,6 +37,7 @@ Bound process   Other processes
 Dedicated exit  Original route
 ```
 
+One machine. Multiple network paths. Application-level control.
 This makes LaneFlow useful when you need one particular application to use a different network exit without moving the rest of the system onto that route.
 
 ## Features
@@ -126,6 +131,22 @@ The 2026-10-16 verification confirmed:
 - routing survived restart;
 - closing / forced termination restored the affected state.
 
+## Philosophy
+
+LaneFlow follows a simple engineering principle:
+**If a behavior matters, define how it is measured.**
+
+The project therefore prefers:
+
+- explicit invariants over visual confirmation;
+- reproducible tests over screenshots;
+- failure disclosure over optimistic claims;
+- recovery testing over happy-path testing;
+- pinned dependencies over ambiguous environments.
+
+The result is intentionally modest in scope:
+a small tool with a clearly defined job, explicit boundaries, and evidence that the job actually works.
+
 ## Architecture
 
 LaneFlow is built with:
@@ -192,22 +213,6 @@ tools/
   cjk-scan.ps1           Repository content gate
   package.ps1            Packaging gate
 ```
-
-## Philosophy
-
-LaneFlow follows a simple engineering principle:
-**If a behavior matters, define how it is measured.**
-
-The project therefore prefers:
-
-- explicit invariants over visual confirmation;
-- reproducible tests over screenshots;
-- failure disclosure over optimistic claims;
-- recovery testing over happy-path testing;
-- pinned dependencies over ambiguous environments.
-
-The result is intentionally modest in scope:
-a small tool with a clearly defined job, explicit boundaries, and evidence that the job actually works.
 
 ## License
 
