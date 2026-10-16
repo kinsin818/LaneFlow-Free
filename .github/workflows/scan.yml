@@ -1,0 +1,99 @@
+name: scan
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  scan-and-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The wordlist never enters the repo: read from the repo secret REDACT_WORDS
+      # (comma-separated). Missing secret → hard failure — the gate must not silently pass
+      # (fail-closed gate rule).
+      - name: Redaction wordlist scan (wordlist externalized)
+        shell: bash
+        env:
+          REDACT_WORDS: ${{ secrets.REDACT_WORDS }}
+        run: |
+          set -e
+          if [ -z "$REDACT_WORDS" ]; then
+            echo "::error::REDACT_WORDS secret not configured; redaction gate refuses to pass silently"
+            exit 1
+          fi
+          IFS=',' read -ra WORDS <<< "$REDACT_WORDS"
+          FAIL=0
+          for w in "${WORDS[@]}"; do
+            w="$(echo "$w" | xargs)"
+            [ -z "$w" ] && continue
+            # Whole-repo scan, including .github itself (no --exclude self-exemption);
+            # -i: the wordlist is matched case-insensitively (variants must not slip through).
+            if grep -rIli --exclude-dir=.git --exclude-dir=bin --exclude-dir=obj -e "$w" . ; then
+              echo "::error::hit redacted word: $w"
+              FAIL=1
+            fi
+          done
+          exit $FAIL
+
+      # Drive-letter paths: forbidden anywhere in the repo (including .github itself; no
+      # self-exemption).
+      - name: Drive-letter path scan
+        shell: bash
+        run: |
+          set -e
+          if grep -rIl --exclude-dir=.git --exclude-dir=bin --exclude-dir=obj -E '[A-Za-z]:\\' . ; then
+            echo "::error::hit drive-letter path"
+            exit 1
+          fi
+
+      # CJK residue: the codebase is English-only (localization change 2026-10-16); CJK is allowed
+      # only in the i18n resource file and the bilingual README, both enforced by tools/cjk-scan.ps1.
+      - name: CJK residue scan (i18n exemptions enforced in script)
+        shell: pwsh
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File tools/cjk-scan.ps1
+
+      # Gumroad (public product word, not a secret) is only allowed in the READMEs and
+      # src/LaneFlow/Config.cs. The scanner itself must reference the word to search for it, so
+      # this file is whitelisted too; note: the internal redaction wordlist has been moved out to
+      # the secret (REDACT_WORDS) and is not in the repo — different in nature from this public
+      # word whitelist, and not a self-exemption of the same kind (case-insensitive).
+      - name: Gumroad whitelist scan (case-insensitive)
+        shell: bash
+        run: |
+          set -e
+          if grep -rIli --exclude-dir=.git --exclude-dir=bin --exclude-dir=obj -e "gumroad" . | grep -viE "README(\.zh)?\.md|src/LaneFlow/Config\.cs|\.github/workflows/scan\.yml" ; then
+            echo "::error::Gumroad found in a non-whitelisted file"
+            exit 1
+          fi
+
+      - name: Build (zero-warning gate)
+        shell: bash
+        run: |
+          dotnet build src/LaneFlow/LaneFlow.csproj -c Release -warnaserror
+          # The self-test project is part of the zero-warning gate too (a compile break or a
+          # new warning in tests must fail CI, not surface only at run time).
+          dotnet build tests/LaneFlow.SelfTest/LaneFlow.SelfTest.csproj -c Release -warnaserror
+
+      # Invariant behavior assertions: account-pair / port 1-65535 / socks5h rejection /
+      # rendered DNS rules in place.
+      - name: Invariant self-test (account/port/parsing/rendering)
+        shell: bash
+        run: |
+          dotnet run --project tests/LaneFlow.SelfTest/LaneFlow.SelfTest.csproj -c Release
+
+      # Packaging gate: publish, kernel-hash lock, exact release layout, SHA256SUMS, zip.
+      # Produces the shippable artifact so the release layout is exercised on every push
+      # (SECURITY.md's reproducibility claim is backed by this step).
+      - name: Package (layout + checksum gate)
+        shell: pwsh
+        run: |
+          tools/package.ps1 -OutDir dist
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: LaneFlow-free-package
+          path: dist/*.zip
+          if-no-files-found: error

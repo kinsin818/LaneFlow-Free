@@ -1,0 +1,31 @@
+sing-box GPL notice
+===================
+
+LaneFlow Free bundles the sing-box binary as its TUN routing kernel.
+
+- Upstream project: https://github.com/SagerNet/sing-box
+- Releases: https://github.com/SagerNet/sing-box/releases
+- Version used: v1.14.3 (Windows amd64)
+- Binary checksums (sha256):
+  zip  : d8b86ef58936dba9230ec6a57ffa4243933f3c14ef4809828b6c553440ed1518
+  exe  : 5c19bb3f8c12d4e85b3d47fe63123a7624b314b58dd7a8e32f51004f1c4d2faf
+
+Distribution facts and GPL-3.0 compliance
+-----------------------------------------
+
+- LaneFlow Free distributes the **unmodified official sing-box.exe binary** (sha256-verified
+  against the official v1.14.3 release). LaneFlow does not modify sing-box source or binaries.
+- sing-box is licensed under the GNU General Public License v3.0. The full license text is in
+  LICENSE/gpl-3.0.txt in this repository.
+- The corresponding source for the bundled binary is available from the upstream repository at
+  the v1.14.3 tag: https://github.com/SagerNet/sing-box/tree/v1.14.3
+- LaneFlow Free itself is released under the MIT license; the two licenses do not conflict.
+  GPL-3.0 obligations apply to sing-box itself (and any modifications to it), which is why the
+  unmodified official binary and its checksums are shipped with this distribution.
+- Packaging note: the official sing-box v1.14.3 windows-amd64 zip contains sing-box.exe,
+  libcronet.dll, and a LICENSE file. This distribution ships sing-box.exe only. libcronet.dll
+  is optional at runtime: it is loaded only for transports that require Cronet, none of which
+  the free edition exposes. If you build your own configuration that needs Cronet, download the
+  official package and place libcronet.dll next to core/sing-box.exe yourself.
+- If the sha256 of the bundled binary does not match the values above or core/SHA256SUMS.txt,
+  the package must be treated as unverified and must not be used.

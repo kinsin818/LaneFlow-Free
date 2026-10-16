@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>LaneFlow</AssemblyName>
+    <RootNamespace>LaneFlow</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <EnableDefaultItems>true</EnableDefaultItems>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+    <Product>LaneFlow Free</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Bundled kernel: core/sing-box.exe is copied into the output directory (invoked at runtime). -->
+    <Content Include="..\..\core\sing-box.exe">
+      <Link>core\sing-box.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Test seams are visible only to the test assembly (internal), so third-party assemblies
+         cannot hijack the DNS/startup paths in-process. -->
+    <InternalsVisibleTo Include="LaneFlow.SelfTest" />
+  </ItemGroup>
+
+</Project>

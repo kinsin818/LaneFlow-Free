@@ -1,0 +1,93 @@
+<Window x:Class="LaneFlow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LaneFlow Free" Height="640" Width="760" ResizeMode="CanMinimize">
+    <DockPanel Margin="12">
+
+        <!-- ===== Section 1: outbound configuration (two-column form). All display text is
+                   applied from the i18n resource set in code (ApplyLanguage); the XAML carries
+                   no user-visible strings. ===== -->
+        <GroupBox DockPanel.Dock="Top" x:Name="GrpOutbound" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="LblType" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox x:Name="CmbType" Grid.Row="0" Grid.Column="1" Width="160" HorizontalAlignment="Left" Margin="0,2">
+                    <ComboBoxItem Content="Socks5" IsSelected="True" Tag="Socks5"/>
+                    <ComboBoxItem Content="HTTP" Tag="Http"/>
+                </ComboBox>
+
+                <Label x:Name="LblHost" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="TxtHost" Grid.Row="1" Grid.Column="1" Margin="0,2"/>
+
+                <Label x:Name="LblPort" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="TxtPort" Grid.Row="2" Grid.Column="1" Width="120" HorizontalAlignment="Left" Margin="0,2"/>
+
+                <Label x:Name="LblUser" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="TxtUser" Grid.Row="3" Grid.Column="1" Width="240" HorizontalAlignment="Left" Margin="0,2"/>
+
+                <Label x:Name="LblPass" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+                <PasswordBox x:Name="TxtPass" Grid.Row="4" Grid.Column="1" Width="240" HorizontalAlignment="Left" Margin="0,2"/>
+
+                <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="0,6,0,0">
+                    <Button x:Name="BtnParseHost" Width="130" Click="BtnParseHost_Click"/>
+                    <Button x:Name="BtnTestProxy" Width="100" Margin="8,0,0,0" Click="BtnTestProxy_Click"/>
+                    <Button x:Name="BtnSave" Width="100" Margin="8,0,0,0" Click="BtnSave_Click"/>
+                    <TextBlock x:Name="TxtProxyState" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <!-- ===== Section 2: process binding ===== -->
+        <GroupBox DockPanel.Dock="Top" x:Name="GrpBind" Padding="10" Margin="0,10,0,0">
+            <StackPanel>
+                <DockPanel>
+                    <Button x:Name="BtnRefresh" DockPanel.Dock="Right" Width="70" Margin="8,0,0,0" Click="BtnRefresh_Click"/>
+                    <ComboBox x:Name="CmbProcess" DisplayMemberPath="Display" SelectedValuePath="Name"/>
+                </DockPanel>
+                <DockPanel Margin="0,6,0,0">
+                    <Button x:Name="BtnBind" DockPanel.Dock="Right" Width="110" Margin="8,0,0,0" Click="BtnBind_Click"/>
+                    <Button x:Name="BtnUnbind" DockPanel.Dock="Right" Width="70" Click="BtnUnbind_Click"/>
+                    <TextBlock x:Name="TxtBindState" VerticalAlignment="Center"/>
+                </DockPanel>
+                <TextBlock x:Name="TxtDupWarn" Foreground="Red" Margin="0,6,0,0" TextWrapping="Wrap" Visibility="Collapsed"/>
+                <TextBlock x:Name="TxtFreeNote" TextWrapping="Wrap" Margin="0,6,0,0" Foreground="#666" FontSize="11"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- ===== Section 3: status ===== -->
+        <GroupBox DockPanel.Dock="Top" x:Name="GrpStatus" Padding="10" Margin="0,10,0,0">
+            <StackPanel>
+                <TextBlock x:Name="TxtStatusOutbound"/>
+                <TextBlock x:Name="TxtStatusBind" Margin="0,4,0,0"/>
+                <TextBlock x:Name="TxtStatusDns" Margin="0,4,0,0"/>
+                <TextBlock x:Name="TxtStatusConn" Margin="0,4,0,0"/>
+                <TextBlock x:Name="TxtStatusMsg" TextWrapping="Wrap" Margin="0,6,0,0" Foreground="#444"/>
+                <TextBlock x:Name="TxtUdpNote" TextWrapping="Wrap" Margin="0,8,0,0" Foreground="#666" FontSize="11"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- ===== Footer: language switch (left) + Get Pro (right, single-constant URL) ===== -->
+        <DockPanel DockPanel.Dock="Bottom" Margin="0,8,0,0">
+            <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Hyperlink x:Name="LnkUpgrade" Click="LnkUpgrade_Click"/>
+            </TextBlock>
+            <ComboBox x:Name="CmbLang" Width="100" HorizontalAlignment="Left"
+                      SelectionChanged="CmbLang_SelectionChanged">
+                <ComboBoxItem Tag="en"/>
+                <ComboBoxItem Tag="zh"/>
+            </ComboBox>
+        </DockPanel>
+    </DockPanel>
+</Window>

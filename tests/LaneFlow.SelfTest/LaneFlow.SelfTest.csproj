@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- Same TFM as the main project (net8.0-windows); required for the WPF ProjectReference. -->
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>LaneFlow.SelfTest</AssemblyName>
+    <RootNamespace>LaneFlow.SelfTest</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\LaneFlow\LaneFlow.csproj" />
+  </ItemGroup>
+
+</Project>

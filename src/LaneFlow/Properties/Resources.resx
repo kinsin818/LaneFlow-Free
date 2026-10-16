@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="1" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <!-- English (default) UI strings. Keys/comments in English; this is the neutral culture resource. -->
+  <data name="OutboundGroup" xml:space="preserve"><value>Outbound</value></data>
+  <data name="TypeLabel" xml:space="preserve"><value>Type</value></data>
+  <data name="HostLabel" xml:space="preserve"><value>Host</value></data>
+  <data name="PortLabel" xml:space="preserve"><value>Port</value></data>
+  <data name="UserLabel" xml:space="preserve"><value>Username</value></data>
+  <data name="PassLabel" xml:space="preserve"><value>Password</value></data>
+  <data name="HostTooltip" xml:space="preserve"><value>Supports 192.0.2.1:1080 or socks5://user:pass@host:port</value></data>
+  <data name="ParseHostBtn" xml:space="preserve"><value>Parse Host Input</value></data>
+  <data name="TestProxyBtn" xml:space="preserve"><value>Test Proxy</value></data>
+  <data name="SaveBtn" xml:space="preserve"><value>Save Config</value></data>
+  <data name="ProxyStateDefault" xml:space="preserve"><value>Not tested</value></data>
+  <data name="BindGroup" xml:space="preserve"><value>Process Binding</value></data>
+  <data name="RefreshBtn" xml:space="preserve"><value>Refresh</value></data>
+  <data name="ProcessTooltip" xml:space="preserve"><value>Pick the app to bind (by image name)</value></data>
+  <data name="BindBtn" xml:space="preserve"><value>Bind &amp;&amp; Enable</value></data>
+  <data name="UnbindBtn" xml:space="preserve"><value>Disable</value></data>
+  <data name="BindStateDefault" xml:space="preserve"><value>Not bound</value></data>
+  <data name="FreeEditionNote" xml:space="preserve"><value>Free edition: only one app is effective at a time; binding again automatically replaces the previous one.</value></data>
+  <data name="StatusGroup" xml:space="preserve"><value>Status</value></data>
+  <data name="UdpNote" xml:space="preserve"><value>Note: the free edition commits TCP only for per-app split tunneling; UDP / QUIC are non-committed traffic, rejected by default as a fallback, and are not guaranteed through the dedicated exit.</value></data>
+  <data name="GetProLink" xml:space="preserve"><value>Get Pro</value></data>
+  <data name="LangItemEn" xml:space="preserve"><value>English</value></data>
+  <data name="LangItemZh" xml:space="preserve"><value>中文</value></data>
+  <data name="SweepMsg" xml:space="preserve"><value>Cleaned {0} leftover sing-box kernel process(es) (preventing adapter squatting).</value></data>
+  <data name="StaleConfigMsg" xml:space="preserve"><value>Config changed but not applied: the on-disk runtime config differs from current settings; re-bind to enable.</value></data>
+  <data name="CorruptFallback" xml:space="preserve"><value>Config corrupted; reverted to defaults.</value></data>
+  <data name="ParsedOk" xml:space="preserve"><value>Host input parsed and split into fields.</value></data>
+  <data name="ParseFailed" xml:space="preserve"><value>Parse failed: {0}</value></data>
+  <data name="InvalidHostPort" xml:space="preserve"><value>Invalid host/port</value></data>
+  <data name="Testing" xml:space="preserve"><value>Testing…</value></data>
+  <data name="ProxyReachable" xml:space="preserve"><value>Reachable</value></data>
+  <data name="ProxyUnreachable" xml:space="preserve"><value>Unreachable</value></data>
+  <data name="ProxyOkMsg" xml:space="preserve"><value>Proxy reachable.</value></data>
+  <data name="ExitIpFmt" xml:space="preserve"><value>Exit IP: {0}</value></data>
+  <data name="ProxyUnreachMsg" xml:space="preserve"><value>Proxy unreachable: {0}</value></data>
+  <data name="SaveFailed" xml:space="preserve"><value>Save failed: {0}</value></data>
+  <data name="SavedRestarting" xml:space="preserve"><value>Saved; restarting the kernel to apply the new outbound…</value></data>
+  <data name="SavedRestarted" xml:space="preserve"><value>Saved to settings.json; kernel restarted with the new outbound ({0}).</value></data>
+  <data name="SavedRestartFailed" xml:space="preserve"><value>Saved, but the kernel restart failed: {0}</value></data>
+  <data name="SavedOk" xml:space="preserve"><value>Saved to settings.json ({0}).</value></data>
+  <data name="SelectProcessFirst" xml:space="preserve"><value>Select a process first</value></data>
+  <data name="MultiInstanceState" xml:space="preserve"><value>Not bound (multiple instances exist)</value></data>
+  <data name="SaveFailedNoEnable" xml:space="preserve"><value>Save failed; forwarding not enabled: {0}</value></data>
+  <data name="StartingKernel" xml:space="preserve"><value>Starting kernel…</value></data>
+  <data name="EnableFailed" xml:space="preserve"><value>Enable failed</value></data>
+  <data name="BoundFmt" xml:space="preserve"><value>Bound: {0} → dedicated exit (active)</value></data>
+  <data name="BoundVerifyingFmt" xml:space="preserve"><value>Bound: {0} → dedicated exit (active, verifying exit…)</value></data>
+  <data name="BoundExitFmt" xml:space="preserve"><value>Bound: {0} → dedicated exit (active, exit IP: {1})</value></data>
+  <data name="BoundVerifyFailedFmt" xml:space="preserve"><value>Bound: {0} → dedicated exit (active, exit verification FAILED)</value></data>
+  <data name="ExitVerifyPassFmt" xml:space="preserve"><value>{0} Exit verification passed (proxy side): {1}</value></data>
+  <data name="ExitVerifyFailFmt" xml:space="preserve"><value>{0} Exit verification FAILED (proxy side): {1} — bound traffic cannot reach the internet (routes force lane, no direct fallback, no leak)</value></data>
+  <data name="DisabledFmt" xml:space="preserve"><value>Disabled: {0} (binding kept; can be re-enabled)</value></data>
+  <data name="StoppedMsg" xml:space="preserve"><value>sing-box stopped; direct connection restored.</value></data>
+  <data name="StatusOutboundFmt" xml:space="preserve"><value>Outbound: {0}</value></data>
+  <data name="StatusBindFmt" xml:space="preserve"><value>Binding: {0}</value></data>
+  <data name="StatusDnsFmt" xml:space="preserve"><value>DNS: {0}</value></data>
+  <data name="StatusConnFmt" xml:space="preserve"><value>Connectivity: {0}</value></data>
+  <data name="BindEnabledFmt" xml:space="preserve"><value>{0} (enabled)</value></data>
+  <data name="BindNotEnabled" xml:space="preserve"><value>not enabled</value></data>
+  <data name="DnsTakeoverActive" xml:space="preserve"><value>takeover active (system resolution via LaneFlow TUN)</value></data>
+  <data name="DnsTakeoverStale" xml:space="preserve"><value>leftover takeover not restored (kernel exited; trace kept; auto-restored at next startup)</value></data>
+  <data name="DnsOriginal" xml:space="preserve"><value>system default</value></data>
+  <data name="ConnKernelDown" xml:space="preserve"><value>kernel not running; forwarding NOT enabled (traffic follows the system default path)</value></data>
+  <data name="ConnRunning" xml:space="preserve"><value>split tunneling active (TCP via dedicated exit)</value></data>
+  <data name="ConnNotEnabled" xml:space="preserve"><value>not enabled (all direct)</value></data>
+</root>

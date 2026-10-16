@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="1" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <!-- Chinese translations (i18n language resource — the CJK gate exemption target).
+       Keys and this comment are English; only the values below are Chinese. -->
+  <data name="OutboundGroup" xml:space="preserve"><value>出口配置</value></data>
+  <data name="TypeLabel" xml:space="preserve"><value>类型</value></data>
+  <data name="HostLabel" xml:space="preserve"><value>主机</value></data>
+  <data name="PortLabel" xml:space="preserve"><value>端口</value></data>
+  <data name="UserLabel" xml:space="preserve"><value>账号</value></data>
+  <data name="PassLabel" xml:space="preserve"><value>密码</value></data>
+  <data name="HostTooltip" xml:space="preserve"><value>支持 192.0.2.1:1080 或 socks5://user:pass@host:port</value></data>
+  <data name="ParseHostBtn" xml:space="preserve"><value>解析主机输入</value></data>
+  <data name="TestProxyBtn" xml:space="preserve"><value>代理检测</value></data>
+  <data name="SaveBtn" xml:space="preserve"><value>保存配置</value></data>
+  <data name="ProxyStateDefault" xml:space="preserve"><value>未检测</value></data>
+  <data name="BindGroup" xml:space="preserve"><value>进程绑定</value></data>
+  <data name="RefreshBtn" xml:space="preserve"><value>刷新</value></data>
+  <data name="ProcessTooltip" xml:space="preserve"><value>选择要绑定的应用（按镜像名）</value></data>
+  <data name="BindBtn" xml:space="preserve"><value>绑定并启用</value></data>
+  <data name="UnbindBtn" xml:space="preserve"><value>停用</value></data>
+  <data name="BindStateDefault" xml:space="preserve"><value>未绑定</value></data>
+  <data name="FreeEditionNote" xml:space="preserve"><value>免费版同一时间仅一个应用生效；再次绑定会自动替换上一个。</value></data>
+  <data name="StatusGroup" xml:space="preserve"><value>状态</value></data>
+  <data name="UdpNote" xml:space="preserve"><value>说明：免费版按应用二次分流仅承诺 TCP；UDP / QUIC 为非承诺流量，默认拦截兜底，不保证经专用出口。</value></data>
+  <data name="GetProLink" xml:space="preserve"><value>获取专业版</value></data>
+  <data name="LangItemEn" xml:space="preserve"><value>English</value></data>
+  <data name="LangItemZh" xml:space="preserve"><value>中文</value></data>
+  <data name="SweepMsg" xml:space="preserve"><value>已清理 {0} 个残留 sing-box 内核进程（防适配器占坑）。</value></data>
+  <data name="StaleConfigMsg" xml:space="preserve"><value>配置已变更未生效：盘上运行配置与当前设置不一致，请重新绑定启用。</value></data>
+  <data name="CorruptFallback" xml:space="preserve"><value>配置损坏，已回退默认。</value></data>
+  <data name="ParsedOk" xml:space="preserve"><value>主机输入已解析并拆字段。</value></data>
+  <data name="ParseFailed" xml:space="preserve"><value>解析失败：{0}</value></data>
+  <data name="InvalidHostPort" xml:space="preserve"><value>主机/端口无效</value></data>
+  <data name="Testing" xml:space="preserve"><value>检测中…</value></data>
+  <data name="ProxyReachable" xml:space="preserve"><value>可达</value></data>
+  <data name="ProxyUnreachable" xml:space="preserve"><value>不可达</value></data>
+  <data name="ProxyOkMsg" xml:space="preserve"><value>代理可达。</value></data>
+  <data name="ExitIpFmt" xml:space="preserve"><value>出口 IP：{0}</value></data>
+  <data name="ProxyUnreachMsg" xml:space="preserve"><value>代理不可达：{0}</value></data>
+  <data name="SaveFailed" xml:space="preserve"><value>保存失败：{0}</value></data>
+  <data name="SavedRestarting" xml:space="preserve"><value>已保存，正在重启内核使新出口生效…</value></data>
+  <data name="SavedRestarted" xml:space="preserve"><value>已保存 settings.json，内核已重启、新出口生效（{0}）。</value></data>
+  <data name="SavedRestartFailed" xml:space="preserve"><value>已保存，但内核重启失败：{0}</value></data>
+  <data name="SavedOk" xml:space="preserve"><value>已保存 settings.json（{0}）。</value></data>
+  <data name="SelectProcessFirst" xml:space="preserve"><value>请先选择一个进程</value></data>
+  <data name="MultiInstanceState" xml:space="preserve"><value>未绑定（存在多实例）</value></data>
+  <data name="SaveFailedNoEnable" xml:space="preserve"><value>保存失败，未启用分流：{0}</value></data>
+  <data name="StartingKernel" xml:space="preserve"><value>正在启动内核…</value></data>
+  <data name="EnableFailed" xml:space="preserve"><value>启用失败</value></data>
+  <data name="BoundFmt" xml:space="preserve"><value>已绑定：{0} → 专用出口（启用中）</value></data>
+  <data name="BoundVerifyingFmt" xml:space="preserve"><value>已绑定：{0} → 专用出口（启用中，正在验证出口…）</value></data>
+  <data name="BoundExitFmt" xml:space="preserve"><value>已绑定：{0} → 专用出口（启用中，出口 IP：{1}）</value></data>
+  <data name="BoundVerifyFailedFmt" xml:space="preserve"><value>已绑定：{0} → 专用出口（启用中，出口验证失败）</value></data>
+  <data name="ExitVerifyPassFmt" xml:space="preserve"><value>{0}出口验证通过（代理侧）：{1}</value></data>
+  <data name="ExitVerifyFailFmt" xml:space="preserve"><value>{0}出口验证失败（代理侧）：{1}——被绑流量将无法出网（路由强制 lane，无直连兜底，未泄露）</value></data>
+  <data name="DisabledFmt" xml:space="preserve"><value>已停用：{0}（保留绑定，可再次启用）</value></data>
+  <data name="StoppedMsg" xml:space="preserve"><value>已停止 sing-box，恢复直连。</value></data>
+  <data name="StatusOutboundFmt" xml:space="preserve"><value>出口：{0}</value></data>
+  <data name="StatusBindFmt" xml:space="preserve"><value>绑定：{0}</value></data>
+  <data name="StatusDnsFmt" xml:space="preserve"><value>DNS：{0}</value></data>
+  <data name="StatusConnFmt" xml:space="preserve"><value>连通：{0}</value></data>
+  <data name="BindEnabledFmt" xml:space="preserve"><value>{0}（已启用）</value></data>
+  <data name="BindNotEnabled" xml:space="preserve"><value>未启用</value></data>
+  <data name="DnsTakeoverActive" xml:space="preserve"><value>接管中（系统解析经 LaneFlow TUN）</value></data>
+  <data name="DnsTakeoverStale" xml:space="preserve"><value>接管残留未还原（内核已退出；痕迹保留，下次启动自动还原）</value></data>
+  <data name="DnsOriginal" xml:space="preserve"><value>系统原样</value></data>
+  <data name="ConnKernelDown" xml:space="preserve"><value>内核未运行，分流未启用（流量走系统默认路径）</value></data>
+  <data name="ConnRunning" xml:space="preserve"><value>分流运行中（TCP 经专用出口）</value></data>
+  <data name="ConnNotEnabled" xml:space="preserve"><value>未启用（全直连）</value></data>
+</root>
