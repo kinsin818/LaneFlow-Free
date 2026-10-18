@@ -164,6 +164,8 @@ LaneFlow is built with:
 
 The repository also pins the bundled sing-box version and records its checksum, while keeping the project and dependency licenses explicit.
 
+> **Bundled network core.** The pinned `core/sing-box.exe` (v1.14.3, checksum recorded in [`core/SHA256SUMS.txt`](core/SHA256SUMS.txt)) is distributed as a **GitHub Release asset**, not committed to this repository. Download it into `core/` to build or run from source, and verify the checksum. Packaged builds are attached to the same release.
+
 ## Security & Trust Model
 
 LaneFlow is designed for use on a trusted local machine.
@@ -216,6 +218,5 @@ tools/
 
 ## License
 
-LaneFlow Free is released under the MIT License.
-The bundled sing-box component is separately licensed under GPL-3.0.
-See the `LICENSE/` directory for the applicable license texts.
+LaneFlow Free is released under the MIT License — see [`LICENSE`](LICENSE).
+The bundled sing-box component is separately licensed under GPL-3.0 — see [`LICENSES/`](LICENSES).

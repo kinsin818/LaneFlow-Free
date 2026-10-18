@@ -2,3 +2,7 @@ bin/
 obj/
 dist/
 *.user/
+
+# Bundled network core & packaged releases are distributed via GitHub Releases, not committed.
+core/sing-box.exe
+release/*.zip
