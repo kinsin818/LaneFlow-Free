@@ -3,7 +3,7 @@
 **⭐ If this saved your Claude account, drop a star — it helps others find the tool.**
 **🐛 Hit a bug or something doesn't work? [Open an issue](https://github.com/kinsin818/LaneFlow-Free/issues/new) — I read every report and push fixes fast.**
 
-**⭐ 如果这个工具帮你保住了 Claude 账号，点个 star ⭐ 让更多人看到。**
+**⭐ 如果这个工具帮你保住了某些针对性比较强的软件账号，点个 star ⭐ 让更多人看到。**
 **🐛 遇到 bug 或问题？[提 issue](https://github.com/kinsin818/LaneFlow-Free/issues/new)，看到就修。**
 
 **⭐ Claude アカウントに役立ったら、ぜひ star を — 多くの人に見つけてもらえます。**
