@@ -9,6 +9,8 @@
 **⭐ Claude アカウントの BAN を回避できたら、ぜひ star を — 多くの人に見つけてもらえます。**
 **🐛 バグや動かない場合は [Issue を作成](https://github.com/kinsin818/LaneFlow-Free/issues/new)。すべて確認して早急に修正します。**
 
+*This is an unofficial open-source project, not affiliated with or endorsed by Anthropic.*
+
 ---
 
 **Route selected Windows applications through a dedicated network exit — while leaving everything else alone.**
