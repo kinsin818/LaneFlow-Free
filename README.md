@@ -6,7 +6,7 @@
 **⭐ 如果这个工具帮你保住了 Claude 账号，点个 star ⭐ 让更多人看到。**
 **🐛 遇到 bug 或问题？[提 issue](https://github.com/kinsin818/LaneFlow-Free/issues/new)，看到就修。**
 
-**⭐ Claude アカウントの BAN を回避できたら、ぜひ star を — 多くの人に見つけてもらえます。**
+**⭐ Claude アカウントに役立ったら、ぜひ star を — 多くの人に見つけてもらえます。**
 **🐛 バグや動かない場合は [Issue を作成](https://github.com/kinsin818/LaneFlow-Free/issues/new)。すべて確認して早急に修正します。**
 
 *This is an unofficial open-source project, not affiliated with or endorsed by Anthropic.*
