@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema id="1" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -82,4 +82,41 @@
   <data name="ConnKernelDown" xml:space="preserve"><value>kernel not running; forwarding NOT enabled (traffic follows the system default path)</value></data>
   <data name="ConnRunning" xml:space="preserve"><value>split tunneling active (TCP via dedicated exit)</value></data>
   <data name="ConnNotEnabled" xml:space="preserve"><value>not enabled (all direct)</value></data>
+  <data name="GateTitle" xml:space="preserve"><value>LaneFlow Free</value></data>
+  <data name="GateSubtitle" xml:space="preserve"><value>Process-level exit routing</value></data>
+  <data name="GateIntroTitle" xml:space="preserve"><value>Before you start</value></data>
+  <data name="GateIntroBody" xml:space="preserve"><value>Setup will pause all network access on this PC for about 5 minutes while the exit is verified. Save your work first.</value></data>
+  <data name="GateStart" xml:space="preserve"><value>Start setup (network will pause)</value></data>
+  <data name="GateSafety" xml:space="preserve"><value>For your account's safety, only one instance may run: two instances would compete for the same TUN adapter and DNS takeover point.</value></data>
+  <data name="GateFormTitle" xml:space="preserve"><value>Exit and program</value></data>
+  <data name="GateIp" xml:space="preserve"><value>Exit IP</value></data>
+  <data name="GatePort" xml:space="preserve"><value>Port</value></data>
+  <data name="GateUser" xml:space="preserve"><value>Username</value></data>
+  <data name="GatePass" xml:space="preserve"><value>Password</value></data>
+  <data name="GatePath" xml:space="preserve"><value>Program path</value></data>
+  <data name="GatePathHint" xml:space="preserve"><value>Full path to the .exe</value></data>
+  <data name="GateNoPaste" xml:space="preserve"><value>Paste is disabled in the free edition.</value></data>
+  <data name="GateBegin" xml:space="preserve"><value>Start verification</value></data>
+  <data name="GateBack" xml:space="preserve"><value>Back</value></data>
+  <data name="GateVerifying" xml:space="preserve"><value>Verifying the exit...</value></data>
+  <data name="GateStabilityTitle" xml:space="preserve"><value>Stability observation</value></data>
+  <data name="GateStable" xml:space="preserve"><value>The line is stable. Keep this window open.</value></data>
+  <data name="GateUnstable" xml:space="preserve"><value>The line is unstable. The countdown restarts.</value></data>
+  <data name="GateAbort" xml:space="preserve"><value>The line failed 3 times in a row. Setup stopped.</value></data>
+  <data name="GateRunningTitle" xml:space="preserve"><value>Connected</value></data>
+  <data name="GateRemaining" xml:space="preserve"><value>Session remaining</value></data>
+  <data name="GateExit" xml:space="preserve"><value>Exit and restore network</value></data>
+  <data name="GateUpgrade" xml:space="preserve"><value>Upgrade to Pro - $3.99</value></data>
+  <data name="GateEscHint" xml:space="preserve"><value>Hold Esc for 3 seconds: exit and restore network</value></data>
+  <data name="GateAlreadyRunning" xml:space="preserve"><value>LaneFlow Free is already running. For your account's safety, only one instance may run.</value></data>
+  <data name="GateInvalidIp" xml:space="preserve"><value>Enter a valid IPv4 address.</value></data>
+  <data name="GateInvalidPath" xml:space="preserve"><value>The program path does not exist.</value></data>
+  <data name="GateStartFailed" xml:space="preserve"><value>Could not start: {0}</value></data>
+  <data name="GateBlackoutFailed" xml:space="preserve"><value>Could not pause the network: {0}</value></data>
+  <data name="GateMismatch" xml:space="preserve"><value>Exit mismatch: expected {0}, got {1}.</value></data>
+  <data name="GateSessionEnded" xml:space="preserve"><value>The 30-minute session has ended. Network restored.</value></data>
+  <data name="GateProbeFailed" xml:space="preserve"><value>Probe failed: {0}</value></data>
+  <data name="GateInvalidPort" xml:space="preserve"><value>Enter a port between 1 and 65535.</value></data>
+  <data name="GateLangToEn" xml:space="preserve"><value>EN</value></data>
+  <data name="GateLangToZh" xml:space="preserve"><value>中文</value></data>
 </root>

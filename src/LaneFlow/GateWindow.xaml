@@ -1,0 +1,140 @@
+﻿<Window x:Class="LaneFlow.GateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LaneFlow Free" WindowStyle="None" WindowState="Maximized" ResizeMode="NoResize"
+        Topmost="True" ShowInTaskbar="True" Background="#0B0F14"
+        Closing="OnClosing" KeyDown="OnKeyDown" KeyUp="OnKeyUp">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#E6EDF3" />
+            <Setter Property="Background" Value="#1F2937" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="18,12" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+        </Style>
+        <Style x:Key="Accent" TargetType="Button">
+            <Setter Property="Foreground" Value="#06231C" />
+            <Setter Property="Background" Value="#2DD4BF" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="22,14" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Margin" Value="0,18,0,0" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="38" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="#0F172A" />
+            <Setter Property="Foreground" Value="#E6EDF3" />
+            <Setter Property="BorderBrush" Value="#1F2937" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Height" Value="38" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="#0F172A" />
+            <Setter Property="Foreground" Value="#E6EDF3" />
+            <Setter Property="BorderBrush" Value="#1F2937" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#C3CCD6" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="56,40,56,0">
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock Text="LaneFlow Free" FontSize="26" FontWeight="Bold" Foreground="#E6EDF3" />
+                <TextBlock x:Name="TxtSession" FontSize="14" Foreground="#2DD4BF" Margin="0,6,0,0" />
+            </StackPanel>
+            <Button x:Name="BtnLang" HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Padding="12,6" FontSize="13" Margin="0" Click="BtnLang_Click" />
+        </Grid>
+
+        <Border Grid.Row="1" Width="860" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Background="#111827" BorderBrush="#1F2937" BorderThickness="1" CornerRadius="18" Padding="46">
+            <Grid>
+                <StackPanel x:Name="IntroPanel">
+                    <TextBlock x:Name="TxtIntroTitle" FontSize="30" FontWeight="Bold" Foreground="#E6EDF3" />
+                    <TextBlock x:Name="TxtIntroBody" Margin="0,16,0,0" FontSize="16" LineHeight="26" />
+                    <TextBlock x:Name="TxtSafety" Margin="0,18,0,0" FontSize="14" Foreground="#8B98A6" LineHeight="23" />
+                    <Button x:Name="BtnStart" Style="{StaticResource Accent}" HorizontalAlignment="Left" Click="BtnStart_Click" />
+                </StackPanel>
+
+                <StackPanel x:Name="FormPanel" Visibility="Collapsed">
+                    <TextBlock x:Name="TxtFormTitle" FontSize="28" FontWeight="Bold" Foreground="#E6EDF3" />
+                    <Grid Margin="0,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" /><RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="LblIp" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,0,12" />
+                        <TextBox x:Name="TxtIp" Grid.Row="0" Grid.Column="1" Margin="0,0,0,12" />
+                        <TextBlock x:Name="LblPort" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,0,12" />
+                        <TextBox x:Name="TxtPort" Grid.Row="1" Grid.Column="1" Margin="0,0,0,12" />
+                        <TextBlock x:Name="LblUser" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,0,12" />
+                        <TextBox x:Name="TxtUser" Grid.Row="2" Grid.Column="1" Margin="0,0,0,12" />
+                        <TextBlock x:Name="LblPass" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,0,12" />
+                        <PasswordBox x:Name="PwdPass" Grid.Row="3" Grid.Column="1" Margin="0,0,0,12" />
+                        <TextBlock x:Name="LblPath" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,0,4" />
+                        <TextBox x:Name="TxtPath" Grid.Row="4" Grid.Column="1" Margin="0,0,0,4" />
+                        <TextBlock x:Name="TxtPathHint" Grid.Row="5" Grid.Column="1" FontSize="12" Foreground="#6F7C8A" Margin="2,0,0,12" />
+                        <TextBlock x:Name="TxtNoPaste" Grid.Row="6" Grid.Column="1" FontSize="12" Foreground="#6F7C8A" Margin="2,0,0,8" />
+                        <TextBlock x:Name="TxtStatus" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" FontSize="14" Foreground="#F59E0B" />
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                        <Button x:Name="BtnBegin" Style="{StaticResource Accent}" Click="BtnBegin_Click" />
+                        <Button x:Name="BtnBack" Margin="14,18,0,0" Click="BtnBack_Click" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel x:Name="StabilityPanel" Visibility="Collapsed">
+                    <TextBlock x:Name="TxtStabilityTitle" FontSize="28" FontWeight="Bold" Foreground="#E6EDF3" />
+                    <TextBlock x:Name="TxtCountdown" FontFamily="Consolas" FontSize="84" FontWeight="Bold"
+                               Foreground="#2DD4BF" Margin="0,18,0,0" />
+                    <ProgressBar x:Name="BarStable" Height="8" Maximum="300" Value="300" Margin="0,10,0,18"
+                                 Background="#0F172A" Foreground="#2DD4BF" BorderThickness="0" />
+                    <TextBlock x:Name="TxtProbe" FontSize="15" LineHeight="24" />
+                </StackPanel>
+
+                <StackPanel x:Name="RunningPanel" Visibility="Collapsed">
+                    <TextBlock x:Name="TxtRunTitle" FontSize="28" FontWeight="Bold" Foreground="#22C55E" />
+                    <TextBlock x:Name="TxtRunRemaining" FontFamily="Consolas" FontSize="64" FontWeight="Bold"
+                               Foreground="#E6EDF3" Margin="0,12,0,6" />
+                    <TextBlock x:Name="TxtRunProgram" FontSize="15" Margin="0,8,0,0" />
+                    <TextBlock x:Name="TxtRunExit" FontSize="15" Margin="0,4,0,0" />
+                    <Button x:Name="BtnExit" Style="{StaticResource Accent}" HorizontalAlignment="Left" Click="BtnExit_Click" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" Margin="56,0,56,40">
+            <Button x:Name="BtnUpgrade" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="BtnUpgrade_Click" />
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Button x:Name="BtnEmergency" Visibility="Collapsed" Click="BtnEmergency_Click" />
+                <TextBlock x:Name="TxtEscHint" FontSize="12" Foreground="#6F7C8A" Margin="0,8,0,0"
+                           HorizontalAlignment="Right" Visibility="Visible" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema id="1" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -83,4 +83,41 @@
   <data name="ConnKernelDown" xml:space="preserve"><value>内核未运行，分流未启用（流量走系统默认路径）</value></data>
   <data name="ConnRunning" xml:space="preserve"><value>分流运行中（TCP 经专用出口）</value></data>
   <data name="ConnNotEnabled" xml:space="preserve"><value>未启用（全直连）</value></data>
+  <data name="GateTitle" xml:space="preserve"><value>LaneFlow Free</value></data>
+  <data name="GateSubtitle" xml:space="preserve"><value>进程级出口分流</value></data>
+  <data name="GateIntroTitle" xml:space="preserve"><value>开始之前</value></data>
+  <data name="GateIntroBody" xml:space="preserve"><value>设置期间会暂停整台电脑的网络约 5 分钟，用于验证出口。请先保存手头的工作。</value></data>
+  <data name="GateStart" xml:space="preserve"><value>开始设置（将暂停网络）</value></data>
+  <data name="GateSafety" xml:space="preserve"><value>为了您的账号安全，同一时间只能运行一个实例：两个实例会抢占同一套 TUN 网卡与 DNS 接管点，可能造成通道串流。</value></data>
+  <data name="GateFormTitle" xml:space="preserve"><value>填写出口与程序</value></data>
+  <data name="GateIp" xml:space="preserve"><value>出口 IP</value></data>
+  <data name="GatePort" xml:space="preserve"><value>端口</value></data>
+  <data name="GateUser" xml:space="preserve"><value>账号</value></data>
+  <data name="GatePass" xml:space="preserve"><value>密码</value></data>
+  <data name="GatePath" xml:space="preserve"><value>程序路径</value></data>
+  <data name="GatePathHint" xml:space="preserve"><value>填写 .exe 的完整路径</value></data>
+  <data name="GateNoPaste" xml:space="preserve"><value>免费版不支持粘贴。</value></data>
+  <data name="GateBegin" xml:space="preserve"><value>开始验证</value></data>
+  <data name="GateBack" xml:space="preserve"><value>返回</value></data>
+  <data name="GateVerifying" xml:space="preserve"><value>正在验证出口...</value></data>
+  <data name="GateStabilityTitle" xml:space="preserve"><value>线路稳定观察</value></data>
+  <data name="GateStable" xml:space="preserve"><value>线路稳定，请保持窗口打开。</value></data>
+  <data name="GateUnstable" xml:space="preserve"><value>线路不稳定，倒计时重新开始。</value></data>
+  <data name="GateAbort" xml:space="preserve"><value>线路连续 3 次失败，已停止。</value></data>
+  <data name="GateRunningTitle" xml:space="preserve"><value>已接管</value></data>
+  <data name="GateRemaining" xml:space="preserve"><value>本次剩余</value></data>
+  <data name="GateExit" xml:space="preserve"><value>退出并恢复网络</value></data>
+  <data name="GateUpgrade" xml:space="preserve"><value>升级 Pro 版 - $3.99</value></data>
+  <data name="GateEscHint" xml:space="preserve"><value>长按 Esc 3 秒：退出并恢复网络</value></data>
+  <data name="GateAlreadyRunning" xml:space="preserve"><value>免费版已在运行。为了您的账号安全，同一时间只能运行一个实例。</value></data>
+  <data name="GateInvalidIp" xml:space="preserve"><value>请填写有效的 IPv4 地址。</value></data>
+  <data name="GateInvalidPath" xml:space="preserve"><value>程序路径不存在。</value></data>
+  <data name="GateStartFailed" xml:space="preserve"><value>启动失败：{0}</value></data>
+  <data name="GateBlackoutFailed" xml:space="preserve"><value>断网失败：{0}</value></data>
+  <data name="GateMismatch" xml:space="preserve"><value>出口不一致：期望 {0}，实际 {1}。</value></data>
+  <data name="GateSessionEnded" xml:space="preserve"><value>30 分钟单次限时已到，网络已恢复。</value></data>
+  <data name="GateProbeFailed" xml:space="preserve"><value>探针失败：{0}</value></data>
+  <data name="GateInvalidPort" xml:space="preserve"><value>请填写 1-65535 之间的端口。</value></data>
+  <data name="GateLangToEn" xml:space="preserve"><value>EN</value></data>
+  <data name="GateLangToZh" xml:space="preserve"><value>中文</value></data>
 </root>
