@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -6,21 +7,53 @@ namespace LaneFlow;
 
 public partial class App : Application
 {
-    // Apply the persisted UI language before any window is constructed, so the first paint is
-    // already in the chosen language (UI defaults to English, switchable;
-    // culture bound to CurrentUICulture).
+    private Mutex? _instanceMutex;
+
     protected override void OnStartup(StartupEventArgs e)
     {
-        RegisterCrashHandlers();
         var doc = Settings.Load();
         L10n.Apply(doc.UiLanguage);
+
+        if (!ClaimSingleInstance())
+        {
+            MessageBox.Show(
+                L10n.T("GateAlreadyRunning"),
+                "LaneFlow Free",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
+            Shutdown();
+            return;
+        }
+
+        ChildJob.Install();
+        AppDomain.CurrentDomain.ProcessExit += (_, _) => ShutDownBackground();
+        RegisterCrashHandlers();
         base.OnStartup(e);
     }
 
-    // Global crash net (packaging review): an unhandled exception while the DNS takeover is
-    // active would otherwise leave the machine pointing at the (now gone) TUN address until the
-    // next launch. The handlers perform a best-effort synchronous restore first, then let the
-    // process die — fail-closed: the exception is never swallowed or marked handled.
+    protected override void OnExit(ExitEventArgs e)
+    {
+        ShutDownBackground();
+        try { _instanceMutex?.ReleaseMutex(); } catch { }
+        _instanceMutex?.Dispose();
+        base.OnExit(e);
+    }
+
+    private bool ClaimSingleInstance()
+    {
+        _instanceMutex = new Mutex(true, @"Global\LaneFlowFree.SingleInstance", out var created);
+        return created;
+    }
+
+    private static void ShutDownBackground()
+    {
+        try { BlackoutRunner.Stop(); } catch { }
+        try { SingBoxRunner.Stop(); } catch { }
+    }
+
+    // Global crash net: an unhandled exception while the DNS takeover is active would otherwise
+    // leave the machine pointing at the (now gone) TUN address until the next launch. Best-effort
+    // restore first, then let the process die (never swallow the exception).
     private void RegisterCrashHandlers()
     {
         DispatcherUnhandledException += (_, e) =>
@@ -31,15 +64,9 @@ public partial class App : Application
         AppDomain.CurrentDomain.UnhandledException += (_, _) => CrashRecover();
     }
 
-    /// <summary>
-    /// Best-effort synchronous DNS restore on a fatal crash path (idempotent). Reads the
-    /// persisted takeover trace from disk, so it also covers a crash of the whole process.
-    /// Never throws; returns the recovery message (or the failure reason) for logging.
-    /// The optional state path exists for the self-test (injection-sealed); production uses
-    /// the default trace location.
-    /// </summary>
     internal static string CrashRecover(string? statePath = null)
     {
+        ShutDownBackground();
         try
         {
             var (found, message) = new WindowsDnsOverride(statePath).RecoverIfStale();

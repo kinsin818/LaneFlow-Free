@@ -1,4 +1,4 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace LaneFlow;
@@ -164,7 +164,7 @@ public sealed class OutboundConfig
 /// </summary>
 public static class ProLink
 {
-    public const string PurchaseUrl = "https://5787773983017.gumroad.com";
+    public const string PurchaseUrl = "https://5787773983017.gumroad.com/l/aquovv";
 }
 
 /// <summary>
@@ -301,7 +301,7 @@ public static class ConfigRenderer
     /// When <paramref name="appExeName"/> is empty (unbound), the output is final=direct only
     /// (everything direct).
     /// </summary>
-    public static string Render(OutboundConfig ob, string? appExeName)
+    public static string Render(OutboundConfig ob, string? appExeName, string? appExePath = null)
     {
         var bound = !string.IsNullOrWhiteSpace(appExeName);
         var config = new System.Text.Json.Nodes.JsonObject();
@@ -396,12 +396,32 @@ public static class ConfigRenderer
                 ["action"] = "hijack-dns",
                 ["port"] = 53
             });
+            // Full-path binding first: same image name at different paths must not cross lanes.
+            var hasPath = !string.IsNullOrWhiteSpace(appExePath);
+            if (hasPath)
+            {
+                rules.Add(new System.Text.Json.Nodes.JsonObject
+                {
+                    ["action"] = "reject",
+                    ["network"] = "udp",
+                    ["process_path"] = new System.Text.Json.Nodes.JsonArray(appExePath!)
+                });
+            }
             rules.Add(new System.Text.Json.Nodes.JsonObject
             {
                 ["action"] = "reject",
                 ["network"] = "udp",
                 ["process_name"] = new System.Text.Json.Nodes.JsonArray(appExeName!)
             });
+            if (hasPath)
+            {
+                rules.Add(new System.Text.Json.Nodes.JsonObject
+                {
+                    ["action"] = "route",
+                    ["outbound"] = "lane",
+                    ["process_path"] = new System.Text.Json.Nodes.JsonArray(appExePath!)
+                });
+            }
             rules.Add(new System.Text.Json.Nodes.JsonObject
             {
                 ["action"] = "route",
@@ -456,6 +476,37 @@ public static class ConfigRenderer
         };
         config["inbounds"] = new System.Text.Json.Nodes.JsonArray(inbound);
 
+        return config.ToJsonString(new JsonSerializerOptions { WriteIndented = true });
+    }
+
+    /// <summary>
+    /// Blackhole render for the setup gate: the TUN captures the default route and every
+    /// connection is rejected (final=block). No outbound exists, so nothing can leave while
+    /// the user is still filling the form.
+    /// </summary>
+    public static string RenderBlackhole()
+    {
+        var config = new System.Text.Json.Nodes.JsonObject
+        {
+            ["log"] = new System.Text.Json.Nodes.JsonObject { ["level"] = "error" },
+            ["inbounds"] = new System.Text.Json.Nodes.JsonArray(
+                new System.Text.Json.Nodes.JsonObject
+                {
+                    ["type"] = "tun",
+                    ["tag"] = "tun-in",
+                    ["interface_name"] = "LaneFlow",
+                    ["address"] = new System.Text.Json.Nodes.JsonArray(TunCidr),
+                    ["auto_route"] = true,
+                    ["strict_route"] = true
+                }),
+            ["outbounds"] = new System.Text.Json.Nodes.JsonArray(
+                new System.Text.Json.Nodes.JsonObject { ["type"] = "block", ["tag"] = "block" }),
+            ["route"] = new System.Text.Json.Nodes.JsonObject
+            {
+                ["rules"] = new System.Text.Json.Nodes.JsonArray(),
+                ["final"] = "block"
+            }
+        };
         return config.ToJsonString(new JsonSerializerOptions { WriteIndented = true });
     }
 }

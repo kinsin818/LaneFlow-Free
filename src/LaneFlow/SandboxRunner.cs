@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -203,7 +203,7 @@ public static class SingBoxRunner
     /// pool route 100.64.0.0/10 → LaneFlow → DNS takeover (all interfaces → 172.19.0.2).
     /// Any step failing stops the kernel and fails closed — never release in a half-ready state.
     /// </summary>
-    public static (bool Ok, string Message) Start(OutboundConfig ob, string appExeName)
+    public static (bool Ok, string Message) Start(OutboundConfig ob, string appExeName, string? appExePath = null)
     {
         if (!File.Exists(SingBoxExe))
             return (false, "core/sing-box.exe not found (bundled kernel missing)");
@@ -224,7 +224,7 @@ public static class SingBoxRunner
         try
         {
             Directory.CreateDirectory(Settings.SingBoxConfigDir);
-            var json = ConfigRenderer.Render(ob, appExeName);
+            var json = ConfigRenderer.Render(ob, appExeName, appExePath);
             File.WriteAllText(Settings.SingBoxConfigPath, json);
             // Render fingerprint (input-sensitivity hardening): records the settings input
             // of this render. UI compares on startup — if settings changed without re-binding,
@@ -279,6 +279,7 @@ public static class SingBoxRunner
                 // the decision path (SelfTest seam).
             }
 
+            ChildJob.Assign(proc);
             lock (Gate) { _proc = proc; }
 
             // TUN readiness gate: kernel is ready only when the /30 on-link route appears
