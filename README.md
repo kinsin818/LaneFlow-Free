@@ -4,6 +4,8 @@ Bind one Windows application to a dedicated network exit — and leave everythin
 
 **[⬇ Download the latest release](https://github.com/kinsin818/LaneFlow-Free/releases/latest)** · **[Report a bug](https://github.com/kinsin818/LaneFlow-Free/issues/new)** · MIT · Windows 10/11 · .NET 8
 
+![Routing model](assets/routing-model.png)
+
 ---
 
 **Route selected Windows applications through a dedicated network exit — while leaving everything else alone.**
