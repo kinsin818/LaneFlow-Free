@@ -1,15 +1,8 @@
 # LaneFlow Free
 
-**⭐ If this saved your Claude account, drop a star — it helps others find the tool.**
-**🐛 Hit a bug or something doesn't work? [Open an issue](https://github.com/kinsin818/LaneFlow-Free/issues/new) — I read every report and push fixes fast.**
+Bind one Windows application to a dedicated network exit — and leave everything else on its original route.
 
-**⭐ 如果这个工具帮你保住了某些针对性比较强的软件账号，点个 star ⭐ 让更多人看到。**
-**🐛 遇到 bug 或问题？[提 issue](https://github.com/kinsin818/LaneFlow-Free/issues/new)，看到就修。**
-
-**⭐ Claude アカウントに役立ったら、ぜひ star を — 多くの人に見つけてもらえます。**
-**🐛 バグや動かない場合は [Issue を作成](https://github.com/kinsin818/LaneFlow-Free/issues/new)。すべて確認して早急に修正します。**
-
-*This is an unofficial open-source project, not affiliated with or endorsed by Anthropic.*
+**[⬇ Download the latest release](https://github.com/kinsin818/LaneFlow-Free/releases/latest)** · **[Report a bug](https://github.com/kinsin818/LaneFlow-Free/issues/new)** · MIT · Windows 10/11 · .NET 8
 
 ---
 
@@ -52,6 +45,13 @@ Dedicated exit  Original route
 
 One machine. Multiple network paths. Application-level control.
 This makes LaneFlow useful when you need one particular application to use a different network exit without moving the rest of the system onto that route.
+
+## What it is used for
+
+- **Multi-environment isolation testing** — put one test client on a different exit while the rest of the machine stays on its normal route.
+- **Automated debugging of network-dependent behaviour** — reproduce what an application does when it reaches the network from a different endpoint, without reconfiguring the whole machine.
+- **Separating test traffic from production traffic** — keep a build or QA process on its own path while your working environment is untouched.
+- **Controlled comparison** — run the same process against two exits and compare the results side by side.
 
 ## Features
 
