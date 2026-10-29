@@ -16,7 +16,7 @@ if ($LASTEXITCODE -ne 0) { Write-Output "PACKAGE FAIL: publish failed"; exit 1 }
 $publishDir = Join-Path $repoRoot "src\LaneFlow\bin\Release\net8.0-windows\publish"
 
 # License texts and README are copied from the repo tree, not the publish output.
-$repoFiles = @("LICENSE\MIT.txt", "LICENSE\gpl-3.0.txt", "LICENSE\sing-box.txt", "README.md")
+$repoFiles = @("LICENSE", "LICENSES\gpl-3.0.txt", "LICENSES\sing-box.txt", "README.md")
 
 # 2. Bundled kernel integrity: the packaged sing-box.exe must match the locked hash
 #    (unmodified official binary; the hash is the distribution's own supply-chain claim).
@@ -41,9 +41,9 @@ $expectedFiles = @(
     "LaneFlow.runtimeconfig.json",
     "core\sing-box.exe",
     "zh\LaneFlow.resources.dll",
-    "LICENSE\MIT.txt",
-    "LICENSE\gpl-3.0.txt",
-    "LICENSE\sing-box.txt",
+    "LICENSE",
+    "LICENSES\gpl-3.0.txt",
+    "LICENSES\sing-box.txt",
     "README.md"
 )
 $pkg = Join-Path $repoRoot "$OutDir\LaneFlow-free"

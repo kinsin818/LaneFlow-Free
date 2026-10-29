@@ -68,6 +68,22 @@ jobs:
             exit 1
           fi
 
+      # The bundled kernel is distributed as a release asset, never committed (see README).
+      # Without this step the build fails on a missing core/sing-box.exe, which says nothing
+      # about the code. The downloaded bytes are checked against the hash the repo records.
+      - name: Fetch the pinned kernel
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          TAG=$(tr -d '\r\n' < core/VERSION.txt)
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" -p sing-box.exe -D core --clobber
+          # the recorded list is checked out with CRLF on Windows; sha256sum would read the
+          # carriage return as part of the file name
+          tr -d '\r' < core/SHA256SUMS.txt > "$RUNNER_TEMP/core-sums.txt"
+          ( cd core && sha256sum -c "$RUNNER_TEMP/core-sums.txt" )
+
       - name: Build (zero-warning gate)
         shell: bash
         run: |
